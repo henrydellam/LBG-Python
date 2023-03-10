@@ -4,7 +4,7 @@ FROM python:3.10
 RUN git clone https://github.com/henrydellam/LBG-Python.git
 # Create and set the work directory inside the image named 'app'
 RUN pwd
-COPY LBG-Python .
+COPY ../LBG-Python .
 WORKDIR /LBG-Python
 # Execute a pip install command using the list 'requirements.txt'
 RUN pip install -r requirements.txt
