@@ -1,6 +1,6 @@
 # Python base image.
 FROM python:3.10
-RUN rmdir LBG-Python
+# RUN rmdir LBG-Python
 # Clone the repo
 RUN git clone https://github.com/henrydellam/LBG-Python.git
 # Create and set the work directory inside the image named 'app'
