@@ -8,8 +8,10 @@ pipeline {
         }
         stage('Tag and Push') {
             steps {
-                sh "docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest"
-                sh "docker push gcr.io/lbg-cohort-10/task4:latest"
+                sh """
+                docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest
+                docker push gcr.io/lbg-cohort-10/task4:latest
+                """
             }
         }
         stage('Deploy') {
