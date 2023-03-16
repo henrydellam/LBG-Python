@@ -9,7 +9,7 @@ pipeline {
         stage('Tag and Push') {
             steps {
                 sh """
-                gcloud auth configure-docker -y
+                withCredentials([googleServiceAccount(credentialsId: 'lbg-cohort-10', scope: 'https://www.googleapis.com/auth/cloud-platform')]) 
                 docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest
                 docker push gcr.io/lbg-cohort-10/task4:latest
                 """
