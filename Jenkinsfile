@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "docker build -t task4:latest --no-cache ."
+                sh "docker build -t task4 --no-cache ."
             }
         }
         stage('Tag and Push') {
