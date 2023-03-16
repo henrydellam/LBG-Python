@@ -11,7 +11,6 @@ pipeline {
                 withCredentials([file(credentialsId: 'gcp-service-account-file', variable: 'GC_KEY')]) {
                     sh """
                     gcloud auth activate-service-account --key-file=${GC_KEY}
-                    # sh('gcloud container clusters get-credentials prod --zone northamerica-northeast1-a --project ${project}')
                     docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest
                     docker push gcr.io/lbg-cohort-10/task4:latest
                     """
