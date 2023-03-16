@@ -8,11 +8,12 @@ pipeline {
         }
         stage('Tag and Push') {
             steps {
-                                
-               withCredentials([file(credentialsId: 'gcp-service-account-file', variable: 'GCR_KEY')]) {
-                  docker tag task4 gcr.io/lbg-cohort-10/task4:latest
-                  docker push gcr.io/lbg-cohort-10/task4:latest
-               }
+                withCredentials([file(credentialsId: 'gcp-service-account-file', variable: 'GC_KEY')]) {
+                    sh """
+                    docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest
+                    docker push gcr.io/lbg-cohort-10/task4:latest
+                    """
+                }
                 
             }
         }
