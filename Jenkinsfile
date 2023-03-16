@@ -8,13 +8,16 @@ pipeline {
         }
         stage('Tag and Push') {
             steps {
-                withCredentials([file(credentialsId: 'gcp-service-account-file', variable: 'GC_KEY')]) {
-                    sh """
-                    gcloud auth activate-service-account --key-file=${GC_KEY}
-                    docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest
-                    docker push gcr.io/lbg-cohort-10/task4:latest
-                    """
+                
+                withCredentials([file(credentialsId: 'gcp-service-account-file', variable: 'GCR_KEY')]) {
+                   sh '''
+                      echo $GCR_KEY > /tmp/gcr_key.json
+                      docker login -u _json_key --password-stdin https://gcr.io < /tmp/gcr_key.json
+                      docker tag YOUR_IMAGE_NAME gcr.io/PROJECT_ID/YOUR_IMAGE_NAME
+                      docker push gcr.io/PROJECT_ID/YOUR_IMAGE_NAME
+                   '''
                 }
+
                 
             }
         }
