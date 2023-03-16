@@ -9,6 +9,7 @@ pipeline {
         stage('Tag and Push') {
             steps {
                 sh """
+                gcloud auth configure-docker -y
                 docker tag task4:latest gcr.io/lbg-cohort-10/task4:latest
                 docker push gcr.io/lbg-cohort-10/task4:latest
                 """
